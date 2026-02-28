@@ -29,7 +29,7 @@ function update_script() {
     exit
   fi
 
-  if check_for_gh_release "donetick" "donetick/donetick"; then
+  if check_for_gh_release "donetick" "wjzijderveld/donetick"; then
     msg_info "Stopping Service"
     systemctl stop donetick
     msg_ok "Stopped Service"
@@ -38,7 +38,7 @@ function update_script() {
     mv /opt/donetick/config/selfhosted.yaml /opt/donetick/donetick.db /opt
     msg_ok "Backed Up Configurations"
 
-    CLEAN_INSTALL=1 fetch_and_deploy_gh_release "donetick" "donetick/donetick" "prebuild" "latest" "/opt/donetick" "donetick_Linux_x86_64.tar.gz"
+    CLEAN_INSTALL=1 fetch_and_deploy_gh_release "donetick" "wjzijderveld/donetick" "prebuild" "latest" "/opt/donetick" "donetick_Linux_x86_64.tar.gz"
 
     msg_info "Restoring Configurations"
     mv /opt/selfhosted.yaml /opt/donetick/config
